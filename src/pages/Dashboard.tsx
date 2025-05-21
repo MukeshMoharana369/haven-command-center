@@ -61,7 +61,7 @@ export const Dashboard = () => {
           name={thermostatDevices['living-room'].name}
           currentTemp={thermostatDevices['living-room'].currentTemp}
           targetTemp={thermostatDevices['living-room'].targetTemp}
-          mode={thermostatDevices['living-room'].mode}
+          mode={thermostatDevices['living-room'].mode as 'cool' | 'heat' | 'off'}
           humidity={thermostatDevices['living-room'].humidity}
         />
       )}
@@ -69,7 +69,7 @@ export const Dashboard = () => {
       <DoorSensor
         id={securityDevices['front-door'].id}
         name={securityDevices['front-door'].name}
-        status={securityDevices['front-door'].status}
+        status={securityDevices['front-door'].status as 'locked' | 'unlocked' | 'opened' | 'closed'}
         lastActivity={securityDevices['front-door'].lastActivity}
       />
       
@@ -108,7 +108,7 @@ export const Dashboard = () => {
             name={roomThermostat.name}
             currentTemp={roomThermostat.currentTemp}
             targetTemp={roomThermostat.targetTemp}
-            mode={roomThermostat.mode}
+            mode={roomThermostat.mode as 'cool' | 'heat' | 'off'}
             humidity={roomThermostat.humidity}
           />
         )}
