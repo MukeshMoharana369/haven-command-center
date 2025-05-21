@@ -8,6 +8,7 @@ import { ThemeProvider } from "./context/ThemeContext";
 import { RoomProvider } from "./context/RoomContext";
 import Index from "./pages/Index";
 import { Dashboard } from "./pages/Dashboard";
+import { Settings } from "./pages/Settings";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -23,6 +24,7 @@ const App = () => (
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/settings" element={<Settings />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>

@@ -5,10 +5,12 @@ import { rooms } from '../../utils/mockData';
 import { Home, ArrowLeft, ArrowRight, Settings } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+import { Link, useNavigate } from 'react-router-dom';
 
 export const Sidebar = () => {
   const [collapsed, setCollapsed] = useState(false);
   const { currentRoom, setCurrentRoom } = useRoom();
+  const navigate = useNavigate();
 
   return (
     <aside 
@@ -36,7 +38,10 @@ export const Sidebar = () => {
             "flex items-center justify-start gap-3 p-4 mb-2", 
             collapsed && "justify-center"
           )}
-          onClick={() => setCurrentRoom({ id: 'overview', name: 'Overview', icon: '🏠' })}
+          onClick={() => {
+            setCurrentRoom({ id: 'overview', name: 'Overview', icon: '🏠' });
+            navigate('/dashboard');
+          }}
         >
           <Home size={20} />
           {!collapsed && <span>Overview</span>}
@@ -53,7 +58,10 @@ export const Sidebar = () => {
                   "w-full flex items-center justify-start gap-3", 
                   collapsed && "justify-center"
                 )}
-                onClick={() => setCurrentRoom(room)}
+                onClick={() => {
+                  setCurrentRoom(room);
+                  navigate('/dashboard');
+                }}
               >
                 <span className="text-lg">{room.icon}</span>
                 {!collapsed && <span>{room.name}</span>}
@@ -70,6 +78,7 @@ export const Sidebar = () => {
             "w-full flex items-center justify-start gap-3", 
             collapsed && "justify-center"
           )}
+          onClick={() => navigate('/settings')}
         >
           <Settings size={20} />
           {!collapsed && <span>Settings</span>}
